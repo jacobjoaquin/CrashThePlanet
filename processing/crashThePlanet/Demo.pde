@@ -51,7 +51,8 @@ class Demos extends DisplayableList {
     currentIndex = index;
   }
   
-  void setAnimationDuration(int frames) {
-    duration = frames;
+  void setAnimationDuration(int duration) {
+    this.duration = duration;
+    this.framesLeft = duration;
   }
 }
