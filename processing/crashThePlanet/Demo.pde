@@ -1,7 +1,7 @@
 class Demos extends DisplayableList {
   Displayable current;
   private int currentIndex = 0;
-  int duration = 100;
+  int duration = 1000;
   int framesLeft;
   final static int RANDOM = 0;
   final static int SEQUENTIAL = 1;
@@ -45,5 +45,13 @@ class Demos extends DisplayableList {
       }
     }
     current = (Displayable) get(currentIndex);
+  }
+  
+  void setAnimationIndex(int index) {
+    currentIndex = index;
+  }
+  
+  void setAnimationDuration(int frames) {
+    duration = frames;
   }
 }
