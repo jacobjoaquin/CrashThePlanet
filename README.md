@@ -6,7 +6,7 @@ Submission for Crash The Planet. March 17th, 2016
 
 *Select Works for Oscilloscope* is a collection of animations by various artists and hackers that explore the relationship between creative coding on dated technology by rendering images built with Processing on older vector displays such as oscilloscopes.
 
-This collection is created using Trammell Hudson's [v.st])(http://v.st/) platform for Vector Displays. Animations are composed in [Processing](processing.org) with a custom library for generating vector line data. The data is streamed in real-time to a Teensy 3.2 and MPC4922 DACs, where the vector lines are converted to audio signals that are then displayed as 2D images on a vector display.
+This collection is created using Trammell Hudson's [v.st](http://v.st/) platform for Vector Displays. Animations are composed in [Processing](processing.org) with a custom library for generating vector line data. The data is streamed in real-time to a Teensy 3.2 and MPC4922 DACs, where the vector lines are converted to audio signals that are then displayed as 2D images on a vector display.
 
 ## People Involved
 
