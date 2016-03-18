@@ -1,4 +1,3 @@
-
 class Grid extends DisplayableBase {
   float maxDepth = -1500;
   float tileSize = 150;
@@ -10,8 +9,10 @@ class Grid extends DisplayableBase {
     phase += phaseInc;  
     phase -= (int) phase;
   }
+  
   void display() {
     // Tower and Horizon
+    stroke(255);
     line(255, -5000, maxDepth, 255, height, maxDepth);
     line(245, -5000, maxDepth, 245, height, maxDepth);
     line(-sideLength, height, maxDepth, sideLength, height, maxDepth);

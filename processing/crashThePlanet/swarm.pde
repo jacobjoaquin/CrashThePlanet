@@ -75,7 +75,7 @@ class Particle
     pushStyle();
     PVector p2 = PVector.sub(p, v);
     stroke(bright ? 255 : 127);
-    line(p, p2);
+    line(p.x, p.y, p2.x, p2.y);
     popStyle();
   }
 };
