@@ -4,7 +4,7 @@
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 1;
+int startingAnimationIndex = 3;
 int animationDuration = 100;
 
 void settings() {
@@ -25,7 +25,7 @@ void setup() {
   demos.add(new Demo3D());
   demos.add(new SwarmDemo());
   demos.add(new QixDemo());
-  demos.add(new SpiralDemo());
+  demos.add(new SpiralDemo(4, 16, 200, 0));
   demos.add(new Grid());
 }
 

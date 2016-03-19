@@ -63,19 +63,23 @@ class RecShape extends DisplayableBase {
 
 class SpiralDemo extends Demo {
   int nPoints = 5;
-  int nSpawns = 32;
-  float theSize;
-  int scale = 1;
+  int nSpawns = 16;
+  float nPhaseInc = 0.01;
 
-  int nFrames = 100;
+  int nFrames = 200;
   float phase = 0.0;
   float phaseInc = 1 / (float) nFrames;
   RecShape shape;
-  DisplayableList shapes;
+  DisplayableList shapes = new DisplayableList();
   
   SpiralDemo() {
-    super();
-    shapes = new DisplayableList();
+  }
+
+  SpiralDemo(int nPoints, int nSpawns, int nFrames, float nPhaseInc) {
+    this.nPoints = nPoints;
+    this.nSpawns = nSpawns;
+    this.nFrames = nFrames;
+    this.nPhaseInc = nPhaseInc;
   }
 
   void update() {
@@ -94,7 +98,7 @@ class SpiralDemo extends Demo {
     
     for (int i = 0; i < nSpawns; i++) {
       RecShape shape2 = shape.spawn(nPhase);
-      nPhase += 0.01;
+      nPhase += nPhaseInc;
       nPhase -= (int) nPhase;
       shapes.add(shape2);
       shape = shape2;
