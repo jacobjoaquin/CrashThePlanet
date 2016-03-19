@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<sceneConfig>
+  <scene timestep='1' width='500' height='500'></scene>
+  <raindropTimes min='1' max='10'></raindropTimes>
+  <raindrops speed='40'></raindrops>
+  <pond height='0.85'></pond>
+  <ripples maxage='20' maxbrightness='120'
+    maxwidth='400' aspectratio='0.2' smoothness='50'></ripples>
+</sceneConfig>

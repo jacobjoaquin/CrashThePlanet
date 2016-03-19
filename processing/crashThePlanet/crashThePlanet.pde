@@ -7,6 +7,9 @@ Demos demos;
 int startingAnimationIndex = 3;
 int animationDuration = 100;
 
+// raindrops
+Scene theScene;
+
 void settings() {
   size(500, 500, P3D);  // Vectrex dimensions
   pixelDensity(displayDensity());
