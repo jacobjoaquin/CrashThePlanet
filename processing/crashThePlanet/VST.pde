@@ -113,6 +113,7 @@ class Vst {
   private ArrayList<ShapePoint> shapeList;  // For beginShape(), vertex(), endShape, etc..
   private final int shapeNSidesDefault = 32;
   private boolean overload = true;
+  boolean displayTheBuffer = true;
 
   Vst(PApplet parent) {
     this.parent = parent;
@@ -129,7 +130,9 @@ class Vst {
 
   void display() {
     buffer.update();
-    displayBuffer();
+    if (displayTheBuffer) {
+      displayBuffer();
+    }
     buffer.send();
     lastPoint = new VstPoint(-1, -1);        // TODO: Better choice for resetting lastPoint?
     lastInsert = new PVector(width / 2, height / 2);
