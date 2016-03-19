@@ -1,10 +1,10 @@
 /*
- * (c) 2016 Trammell Hudson, Adelle Lin and Jacob Joaquin
+ * (c) 2016 Trammell Hudson, Adelle Lin, Duncan Malashock and Jacob Joaquin
  */
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 5;
+int startingAnimationIndex = 6;
 
 // raindrops
 Scene theScene;
@@ -30,6 +30,7 @@ void setup() {
   demos.add(new SpiralDemo(4, 16, 200, 0));
   demos.add(new Grid());
   demos.add(new Scene());
+  demos.add(new PolarSine());
 }
 
 void draw() {

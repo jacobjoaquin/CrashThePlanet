@@ -53,7 +53,7 @@ class Demos extends DisplayableList<Demo> {
   }
 }
 
-class Demo extends DisplayableBase {
+abstract class Demo extends DisplayableBase {
   private int theFrameRate = 50;
   private float durationInSeconds = 20;
 
