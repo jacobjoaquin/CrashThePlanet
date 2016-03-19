@@ -1,4 +1,4 @@
-class Grid extends DisplayableBase {
+class Grid extends Demo {
   float maxDepth = -1500;
   float tileSize = 150;
   float sideLength = 4000;

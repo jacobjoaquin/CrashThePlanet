@@ -5,7 +5,7 @@
 Vst vst;
 Demos demos;
 int startingAnimationIndex = 1;
-int animationDuration = 1000;
+int animationDuration = 100;
 
 void settings() {
   size(500, 500, P3D);  // Vectrex dimensions

@@ -1,5 +1,5 @@
-class Demos extends DisplayableList {
-  Displayable current;
+class Demos extends DisplayableList<Demo> {
+  Demo current;
   private int currentIndex = 0;
   int duration = 1000;
   int framesLeft;
@@ -18,7 +18,8 @@ class Demos extends DisplayableList {
 
   void update() {
     if (current == null) {
-      current = (Displayable) get(currentIndex);
+      current = (Demo) get(currentIndex);
+      current.init();
     }
 
     if (framesLeft-- == 0) {
@@ -44,7 +45,8 @@ class Demos extends DisplayableList {
         currentIndex = (int) random(size());
       }
     }
-    current = (Displayable) get(currentIndex);
+    current = (Demo) get(currentIndex);
+    current.init();
   }
   
   void setAnimationIndex(int index) {
@@ -54,5 +56,13 @@ class Demos extends DisplayableList {
   void setAnimationDuration(int duration) {
     this.duration = duration;
     this.framesLeft = duration;
+  }
+}
+
+class Demo extends DisplayableBase {
+  int theFrameRate = 50;
+
+  void init() {
+    frameRate(theFrameRate);
   }
 }

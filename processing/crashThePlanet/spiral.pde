@@ -61,7 +61,7 @@ class RecShape extends DisplayableBase {
 }
 
 
-class SpiralDemo extends DisplayableBase {
+class SpiralDemo extends Demo {
   int nPoints = 5;
   int nSpawns = 32;
   float theSize;

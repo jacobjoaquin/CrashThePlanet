@@ -84,13 +84,12 @@ class Particle
 };
 
 
-class SwarmDemo extends DisplayableBase
+class SwarmDemo extends Demo
 {
   final int num_bees = 50;
   Particle wasp;
   Particle[] bees;
   boolean wasp_follows_mouse = false;
-
 
   SwarmDemo()
   {
@@ -98,6 +97,7 @@ class SwarmDemo extends DisplayableBase
     bees = new Particle[num_bees];
     for (int i = 0; i < num_bees; i++)
       bees[i] = new Particle();
+    theFrameRate = 25;
   }
 
   void display() {

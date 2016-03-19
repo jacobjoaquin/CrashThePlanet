@@ -81,7 +81,7 @@ class Camera
 }
 
 
-class Demo3D extends DisplayableBase
+class Demo3D extends Demo
 {
   Camera c;
   PVector[] walk;
