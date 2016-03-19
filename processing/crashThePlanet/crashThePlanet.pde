@@ -15,7 +15,7 @@ void settings() {
 void setup() {
   frameRate(50);
   vst = new Vst(this, createSerial());
-  vst.displayTransit = true;
+  //vst.displayTransit = true;
   blendMode(ADD);
 
   demos = new Demos();

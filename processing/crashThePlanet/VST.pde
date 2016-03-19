@@ -177,8 +177,10 @@ class Vst {
     } else if (g.is3D()) {
       p0.x = screenX(pt0.x, pt0.y, pt0.z);
       p0.y = screenY(pt0.x, pt0.y, pt0.z);
+      p0.z = screenZ(pt0.x, pt0.y, pt0.z);
       p1.x = screenX(pt1.x, pt1.y, pt1.z);
       p1.y = screenY(pt1.x, pt1.y, pt1.z);
+      p1.z = screenY(pt1.x, pt1.y, pt1.z);
 
       // Don't display if behind z-plane.
       // TODO: Doesn't compensate for camera translations

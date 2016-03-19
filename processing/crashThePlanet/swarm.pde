@@ -72,11 +72,14 @@ class Particle
 
   void draw(boolean bright)
   {
+    pushMatrix();
+    translate(0, 0, -500);
     pushStyle();
     PVector p2 = PVector.sub(p, v);
     stroke(bright ? 255 : 127);
-    line(p.x, p.y, p2.x, p2.y);
+    line(p, p2);
     popStyle();
+    popMatrix();
   }
 };
 
