@@ -17,7 +17,7 @@ class QixDemo extends Demo
   int head = 0;
   
   QixDemo() {
-    theFrameRate = 25;
+    setFrameRate(25);
   }
   
   void display() {

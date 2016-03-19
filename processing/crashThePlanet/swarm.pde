@@ -97,7 +97,7 @@ class SwarmDemo extends Demo
     bees = new Particle[num_bees];
     for (int i = 0; i < num_bees; i++)
       bees[i] = new Particle();
-    theFrameRate = 25;
+    setFrameRate(25);
   }
 
   void display() {

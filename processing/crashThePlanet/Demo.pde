@@ -1,7 +1,6 @@
 class Demos extends DisplayableList<Demo> {
   Demo current;
   private int currentIndex = 0;
-  int duration = 1000;
   int framesLeft;
   final static int RANDOM = 0;
   final static int SEQUENTIAL = 1;
@@ -9,7 +8,6 @@ class Demos extends DisplayableList<Demo> {
 
   Demos() {
     super();
-    framesLeft = duration;
   }
 
   void setMode(int mode) {
@@ -20,6 +18,7 @@ class Demos extends DisplayableList<Demo> {
     if (current == null) {
       current = (Demo) get(currentIndex);
       current.init();
+      framesLeft = current.getDurationInFrames();
     }
 
     if (framesLeft-- == 0) {
@@ -34,7 +33,6 @@ class Demos extends DisplayableList<Demo> {
   }
 
   void next() {
-    framesLeft = duration;
     if (mode == SEQUENTIAL) {
       currentIndex += 1;
       currentIndex %= size();
@@ -47,22 +45,27 @@ class Demos extends DisplayableList<Demo> {
     }
     current = (Demo) get(currentIndex);
     current.init();
+    framesLeft = current.getDurationInFrames();
   }
   
   void setAnimationIndex(int index) {
     currentIndex = index;
   }
-  
-  void setAnimationDuration(int duration) {
-    this.duration = duration;
-    this.framesLeft = duration;
-  }
 }
 
 class Demo extends DisplayableBase {
-  int theFrameRate = 50;
+  private int theFrameRate = 50;
+  private float durationInSeconds = 2;
 
   void init() {
     frameRate(theFrameRate);
+  }
+
+  void setFrameRate(int fr) {
+    theFrameRate = fr;
+  }
+
+  int getDurationInFrames() {
+    return (int) ((float) theFrameRate * durationInSeconds);
   }
 }

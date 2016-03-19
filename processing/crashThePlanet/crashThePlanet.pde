@@ -20,7 +20,6 @@ void setup() {
 
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
-  demos.setAnimationDuration(animationDuration);
 
   // Add animations
   demos.add(new Demo3D());
