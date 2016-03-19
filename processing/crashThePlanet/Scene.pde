@@ -28,6 +28,7 @@ class Scene extends Demo {
     time_since_last_raindrop = 0;
     time_until_next_raindrop = 0;
     loadConfig("raindrops-config.xml");
+    setFrameRate(30);    
   }
   
   void loadConfig(String filename) {

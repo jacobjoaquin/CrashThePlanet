@@ -4,8 +4,7 @@
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 3;
-int animationDuration = 100;
+int startingAnimationIndex = 5;
 
 // raindrops
 Scene theScene;
@@ -30,6 +29,7 @@ void setup() {
   demos.add(new QixDemo());
   demos.add(new SpiralDemo(4, 16, 200, 0));
   demos.add(new Grid());
+  demos.add(new Scene());
 }
 
 void draw() {
