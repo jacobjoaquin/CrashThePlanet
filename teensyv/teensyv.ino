@@ -1,3 +1,5 @@
+// Crash the Planet!!
+
 /** \file
  * Vector display using the MCP4921 DAC on the teensy3.1.
  *
@@ -71,14 +73,17 @@
 
 // most vector scopes don't have brightness control, but set it anyway
 //#undef CONFIG_BRIGHTNESS
-//#define BRIGHT_OFF	2048	// "0 volts", relative to reference
-//#define BRIGHT_NORMAL	3800	// lowest visible
-//#define BRIGHT_BRIGHT	4095	// super bright
+#define CONFIG_BRIGHTNESS  // use the brightness DAC
 
-#define BRIGHT_OFF  0  // "0 volts", relative to reference
-#define BRIGHT_NORMAL 2048  // lowest visible
-#define BRIGHT_BRIGHT 4095  // super bright
+#define BRIGHT_OFF	0	// "0 volts", relative to reference
+#define BRIGHT_NORMAL	3800	// lowest visible
+#define BRIGHT_BRIGHT	8192	// super bright
 
+
+#define OFF_SHIFT  10 // smaller numbers == slower transits
+#define OFF_DWELL0  0  // time to sit beam on before starting a transit
+#define OFF_DWELL1  0 // time to sit before starting a transit
+#define OFF_DWELL2  0  // time to sit after finishing a transit
 
 
 #elif defined(CONFIG_VECTREX)
@@ -644,10 +649,12 @@ brightness(
 		bright = 64;
 
 	int bright_scaled = BRIGHT_OFF;
-	if (bright > 0)
+	if (bright > 0) {
+    bright = 64 - bright;
 		bright_scaled = BRIGHT_NORMAL + ((BRIGHT_BRIGHT - BRIGHT_NORMAL) * bright) / 64;
+	}
 
-	mpc4921_write(0, bright_scaled);
+  mpc4921_write(0, bright_scaled);
 	spi_dma_cs = SPI_DMA_CS_BEAM_ON;
 #else
 	(void) bright;

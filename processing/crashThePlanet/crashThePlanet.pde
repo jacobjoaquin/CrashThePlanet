@@ -4,7 +4,7 @@
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 6;
+int startingAnimationIndex = 7;
 
 // raindrops
 Scene theScene;
@@ -31,6 +31,7 @@ void setup() {
   demos.add(new Grid());
   demos.add(new Scene());
   demos.add(new PolarSine());
+  demos.add(new Foo());
 }
 
 void draw() {
