@@ -4,7 +4,7 @@
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 7;
+int startingAnimationIndex = 4;
 
 // raindrops
 Scene theScene;

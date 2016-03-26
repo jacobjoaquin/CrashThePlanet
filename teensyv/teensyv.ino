@@ -75,15 +75,18 @@
 //#undef CONFIG_BRIGHTNESS
 #define CONFIG_BRIGHTNESS  // use the brightness DAC
 
-#define BRIGHT_OFF	0	// "0 volts", relative to reference
-#define BRIGHT_NORMAL	3800	// lowest visible
-#define BRIGHT_BRIGHT	8192	// super bright
+//#define BRIGHT_OFF	0	// "0 volts", relative to reference
+//#define BRIGHT_NORMAL	3800	// lowest visible
+//#define BRIGHT_BRIGHT	8192	// super bright
 
+#define BRIGHT_OFF  8192 // "0 volts", relative to reference
+#define BRIGHT_NORMAL 4096  // lowest visible
+#define BRIGHT_BRIGHT 0  // super bright
 
-#define OFF_SHIFT  10 // smaller numbers == slower transits
-#define OFF_DWELL0  0  // time to sit beam on before starting a transit
-#define OFF_DWELL1  0 // time to sit before starting a transit
-#define OFF_DWELL2  0  // time to sit after finishing a transit
+#define OFF_SHIFT  1 // smaller numbers == slower transits
+#define OFF_DWELL0  5  // time to sit beam on before starting a transit
+#define OFF_DWELL1  5 // time to sit before starting a transit
+#define OFF_DWELL2  5  // time to sit after finishing a transit
 
 
 #elif defined(CONFIG_VECTREX)
@@ -650,7 +653,7 @@ brightness(
 
 	int bright_scaled = BRIGHT_OFF;
 	if (bright > 0) {
-    bright = 64 - bright;
+//    bright = 64 - bright;
 		bright_scaled = BRIGHT_NORMAL + ((BRIGHT_BRIGHT - BRIGHT_NORMAL) * bright) / 64;
 	}
 
