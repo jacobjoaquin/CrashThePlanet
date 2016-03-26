@@ -9,6 +9,14 @@ void line(float x0, float y0, float x1, float y1) {
   }
 }
 
+void line(float x0, float y0, float z0, float x1, float y1, float z1) {
+  if (vst.overload) {
+    vst.line(x0, y0, z0, x1, y1, z1);
+  } else {
+    super.line(x0, y0, z0, x1, y1, z1);
+  }
+}
+
 void line(PVector p0, PVector p1) {
   if (vst.overload) {
     vst.line(p0, p1);
@@ -172,8 +180,10 @@ class Vst {
     } else if (g.is3D()) {
       p0.x = screenX(pt0.x, pt0.y, pt0.z);
       p0.y = screenY(pt0.x, pt0.y, pt0.z);
+      p0.z = screenZ(pt0.x, pt0.y, pt0.z);
       p1.x = screenX(pt1.x, pt1.y, pt1.z);
       p1.y = screenY(pt1.x, pt1.y, pt1.z);
+      p1.z = screenZ(pt1.x, pt1.y, pt1.z);
 
       // Don't display if behind z-plane.
       // TODO: Doesn't compensate for camera translations

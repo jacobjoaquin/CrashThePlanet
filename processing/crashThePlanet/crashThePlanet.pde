@@ -1,5 +1,5 @@
 /*
- * (c) 2016 Trammell Hudson, Adelle Lin, Duncan Malashock and Jacob Joaquin
+ * (c) 2016 Trammell Hudson, Holly Hudson, Adelle Lin, Duncan Malashock and Jacob Joaquin
  */
 
 Vst vst;
@@ -17,7 +17,7 @@ void settings() {
 void setup() {
   frameRate(50);
   vst = new Vst(this, createSerial());
-  //vst.displayTransit = true;
+  vst.displayTransit = true;
   blendMode(ADD);
 
   demos = new Demos();
