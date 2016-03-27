@@ -55,7 +55,7 @@ class Demos extends DisplayableList<Demo> {
 
 abstract class Demo extends DisplayableBase {
   private int theFrameRate = 50;
-  private float durationInSeconds = 20;
+  private float durationInSeconds = 5;
 
   void init() {
     frameRate(theFrameRate);

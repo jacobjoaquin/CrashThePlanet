@@ -9,14 +9,6 @@ void line(float x0, float y0, float x1, float y1) {
   }
 }
 
-void line(float x0, float y0, float z0, float x1, float y1, float z1) {
-  if (vst.overload) {
-    vst.line(x0, y0, z0, x1, y1, z1);
-  } else {
-    super.line(x0, y0, z0, x1, y1, z1);
-  }
-}
-
 void line(PVector p0, PVector p1) {
   if (vst.overload) {
     vst.line(p0, p1);
@@ -121,7 +113,6 @@ class Vst {
   private ArrayList<ShapePoint> shapeList;  // For beginShape(), vertex(), endShape, etc..
   private final int shapeNSidesDefault = 32;
   private boolean overload = true;
-  boolean displayTheBuffer = true;
 
   Vst(PApplet parent) {
     this.parent = parent;
@@ -138,9 +129,7 @@ class Vst {
 
   void display() {
     buffer.update();
-    if (displayTheBuffer) {
-      displayBuffer();
-    }
+    displayBuffer();
     buffer.send();
     lastPoint = new VstPoint(-1, -1);        // TODO: Better choice for resetting lastPoint?
     lastInsert = new PVector(width / 2, height / 2);
@@ -180,10 +169,8 @@ class Vst {
     } else if (g.is3D()) {
       p0.x = screenX(pt0.x, pt0.y, pt0.z);
       p0.y = screenY(pt0.x, pt0.y, pt0.z);
-      p0.z = screenZ(pt0.x, pt0.y, pt0.z);
       p1.x = screenX(pt1.x, pt1.y, pt1.z);
       p1.y = screenY(pt1.x, pt1.y, pt1.z);
-      p1.z = screenZ(pt1.x, pt1.y, pt1.z);
 
       // Don't display if behind z-plane.
       // TODO: Doesn't compensate for camera translations
@@ -404,7 +391,6 @@ class VstBuffer extends ArrayList<VstPoint> {
   private final static int MAX_POINTS = (LENGTH - HEADER_LENGTH - TAIL_LENGTH - 1) / 4;
   private final byte[] buffer = new byte[LENGTH];
   private Serial serial;
-  int bufferByteCount = 0;
 
   public void update() {
     VstBuffer temp = sort();
@@ -432,34 +418,33 @@ class VstBuffer extends ArrayList<VstPoint> {
   }
 
   public void send() {
-    int byte_count = 0;
+    if (!isEmpty() && serial != null) {
+      int byte_count = 0;
 
-    // Header
-    buffer[byte_count++] = 0;
-    buffer[byte_count++] = 0;
-    buffer[byte_count++] = 0;
-    buffer[byte_count++] = 0;
+      // Header
+      buffer[byte_count++] = 0;
+      buffer[byte_count++] = 0;
+      buffer[byte_count++] = 0;
+      buffer[byte_count++] = 0;
 
-    // Data
-    for (VstPoint point : this) {
-      int v = 2 << 30 | (((int) (point.z / 4)) & 63) << 24 | (point.x & 4095) << 12 | (point.y & 4095) << 0;
-      buffer[byte_count++] = (byte) ((v >> 24) & 0xFF);
-      buffer[byte_count++] = (byte) ((v >> 16) & 0xFF);
-      buffer[byte_count++] = (byte) ((v >> 8) & 0xFF);
-      buffer[byte_count++] = (byte) (v & 0xFF);
-    }
+      // Data
+      for (VstPoint point : this) {
+        int v = 2 << 30 | (((int) (point.z / 4)) & 63) << 24 | (point.x & 4095) << 12 | (point.y & 4095) << 0;
+        buffer[byte_count++] = (byte) ((v >> 24) & 0xFF);
+        buffer[byte_count++] = (byte) ((v >> 16) & 0xFF);
+        buffer[byte_count++] = (byte) ((v >> 8) & 0xFF);
+        buffer[byte_count++] = (byte) (v & 0xFF);
+      }
 
-    // Tail
-    buffer[byte_count++] = 1;
-    buffer[byte_count++] = 1;
-    buffer[byte_count++] = 1;
-    buffer[byte_count++] = 1;
+      // Tail
+      buffer[byte_count++] = 1;
+      buffer[byte_count++] = 1;
+      buffer[byte_count++] = 1;
+      buffer[byte_count++] = 1;
 
-    // Send via serial
-    if (serial != null) {
+      // Send via serial
       serial.write(subset(buffer, 0, byte_count));
     }
-    bufferByteCount = byte_count;
 
     clear();
   }

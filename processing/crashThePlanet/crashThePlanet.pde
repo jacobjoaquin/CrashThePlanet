@@ -5,6 +5,7 @@
 Vst vst;
 Demos demos;
 int startingAnimationIndex = 4;
+VstRecorder vstRecorder;
 
 // raindrops
 Scene theScene;
@@ -18,6 +19,7 @@ void setup() {
   frameRate(50);
   vst = new Vst(this, createSerial());
   vst.displayTransit = true;
+  vstRecorder = new VstRecorder(vst, "MEH.DAT");
   blendMode(ADD);
 
   demos = new Demos();
@@ -32,6 +34,9 @@ void setup() {
   demos.add(new Scene());
   demos.add(new PolarSine());
   demos.add(new Foo());
+
+  // Recording
+  vstRecorder.beginRecord();
 }
 
 void draw() {
@@ -39,4 +44,10 @@ void draw() {
   demos.update();
   demos.display();
   vst.display();
+
+  // Recording
+  vstRecorder.update();
+  if (frameCount == 20) {
+    vstRecorder.endRecord();
+  }
 }
