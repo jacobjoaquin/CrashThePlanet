@@ -19,7 +19,8 @@ void setup() {
   frameRate(50);
   vst = new Vst(this, createSerial());
   vst.displayTransit = true;
-  vstRecorder = new VstRecorder(vst, "MEH.DAT");
+  // vstRecorder = new VstRecorder(vst, "MEH.DAT");
+  vst.displayTheBuffer = false;
   blendMode(ADD);
 
   demos = new Demos();
