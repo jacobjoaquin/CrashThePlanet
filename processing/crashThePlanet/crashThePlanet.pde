@@ -46,8 +46,8 @@ void draw() {
   vst.display();
 
   // Recording
-  vstRecorder.update();
-  if (frameCount == 20) {
-    vstRecorder.endRecord();
-  }
+  // vstRecorder.update();
+  // if (frameCount == 20) {
+  //   vstRecorder.endRecord();
+  // }
 }
