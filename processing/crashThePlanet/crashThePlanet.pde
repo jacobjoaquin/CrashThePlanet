@@ -4,14 +4,14 @@
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 4;
+int startingAnimationIndex = 0;
 VstRecorder vstRecorder;
 
 // raindrops
 Scene theScene;
 
 void settings() {
-  size(500, 500, P3D);  // Vectrex dimensions
+  size(500, 500);  // Vectrex dimensions
   pixelDensity(displayDensity());
 }
 
@@ -30,19 +30,22 @@ void setup() {
   demos.add(new SwarmDemo());
   demos.add(new QixDemo());
   demos.add(new SpiralDemo(4, 16, 200, 0));
-  demos.add(new Grid());
+  // demos.add(new Grid());
   demos.add(new Scene());
   demos.add(new PolarSine());
   demos.add(new Foo());
 
   // Recording
-  vstRecorder.beginRecord();
+  // vstRecorder.beginRecord();
 }
 
 void draw() {
   background(0);
   demos.update();
+  pushMatrix();
+  scale(0.5);
   demos.display();
+  popMatrix();
   vst.display();
 
   // Recording

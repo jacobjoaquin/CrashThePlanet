@@ -172,12 +172,7 @@ class Vst {
     PVector pt0 = p0.copy();
     PVector pt1 = p1.copy();
 
-    if (g.is2D()) {
-      p0.x = screenX(pt0.x, pt0.y);
-      p0.y = screenY(pt0.x, pt0.y);
-      p1.x = screenX(pt1.x, pt1.y);
-      p1.y = screenY(pt1.x, pt1.y);
-    } else if (g.is3D()) {
+    if (g.is3D()) {
       p0.x = screenX(pt0.x, pt0.y, pt0.z);
       p0.y = screenY(pt0.x, pt0.y, pt0.z);
       p0.z = screenZ(pt0.x, pt0.y, pt0.z);
@@ -192,6 +187,11 @@ class Vst {
       if (zClip0 > 0 || zClip1 > 0) {
         return;
       }
+    } else {
+      p0.x = screenX(pt0.x, pt0.y);
+      p0.y = screenY(pt0.x, pt0.y);
+      p1.x = screenX(pt1.x, pt1.y);
+      p1.y = screenY(pt1.x, pt1.y);
     }
 
     if (!clip.clip(p0, p1)) {

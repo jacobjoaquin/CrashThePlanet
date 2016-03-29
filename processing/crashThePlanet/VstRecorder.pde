@@ -93,7 +93,7 @@ class VstPlayback extends DisplayableBase {
 		// Send Byte Data Vst
 	}
 
-	void close(); {
+	void close() {
 		try {
 			fileInputStream.close();
 		}
