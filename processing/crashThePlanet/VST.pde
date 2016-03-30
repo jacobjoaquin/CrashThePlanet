@@ -412,6 +412,21 @@ class VstBuffer extends ArrayList<VstPoint> {
     addAll(temp);
   }
 
+  public StringBuffer toCSV() {
+    StringBuffer sb = new StringBuffer();
+    for (VstPoint p : this) {
+      sb.append(p.x);
+      sb.append(",");
+      sb.append(p.y);
+      sb.append(",");
+      sb.append(p.z);
+      sb.append(",");
+    }
+    sb.setLength(sb.length() - 1);
+
+    return sb;
+  }
+
   public void setSerial(Serial serial) {
     this.serial = serial;
   }
@@ -461,7 +476,9 @@ class VstBuffer extends ArrayList<VstPoint> {
     }
     bufferByteCount = byte_count;
 
-    clear();
+    // TODO: Removed clear() here. Should have a vst.init() called at beginning or something
+    // in order to make the final Vst frame data available for recording.
+    // clear()
   }
 
   private VstBuffer sort() {
