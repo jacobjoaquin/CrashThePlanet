@@ -77,12 +77,13 @@ class VstDataPlayback extends Demo {
 	VstDataPlayback(Vst vst, String filename) {
 		this.vst = vst;
 		this.filename = filename;
-		init();
+		loadFile();
 	}
 
-	void init() {
+	void loadFile() {
 		file = new File(sketchPath("") + filename);
 		try {
+			close();  // Close file if already open
 			bufferedReader = new BufferedReader(new FileReader(file));
 		}
 		catch (FileNotFoundException e) {
@@ -91,6 +92,7 @@ class VstDataPlayback extends Demo {
 		catch (IOException e) {
 			println(e);
 		}
+
 	}
 
 	void update() {
@@ -108,7 +110,7 @@ class VstDataPlayback extends Demo {
 				}
 			}
 			else {
-				init();
+				loadFile();
 			}
 		} catch (IOException e) {
 			println(e);
@@ -124,6 +126,9 @@ class VstDataPlayback extends Demo {
 			bufferedReader.close();
 		}
 		catch (IOException e) {
+			println(e);
+		}
+		catch (Exception e) {
 			println(e);
 		}
 	}
