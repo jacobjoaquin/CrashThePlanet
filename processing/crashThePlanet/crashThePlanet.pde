@@ -33,13 +33,13 @@ void setup() {
   catcher.setFrameRate(25);
   demos.add(catcher);
   demos.add(new Demo3D());
-  // demos.add(new SwarmDemo());
-  // demos.add(new QixDemo());
-  // demos.add(new SpiralDemo(4, 16, 200, 0));
+  demos.add(new SwarmDemo());
+  demos.add(new QixDemo());
+  demos.add(new SpiralDemo(4, 16, 200, 0));
   // // demos.add(new Grid());
-  // demos.add(new Scene());
-  // demos.add(new PolarSine());
-  // demos.add(new Foo());
+  demos.add(new Scene());
+  demos.add(new PolarSine());
+  demos.add(new Foo());
 
   // Recording
   // vstDataRecorder.beginRecord();
