@@ -7,7 +7,7 @@ Demos demos;
 int startingAnimationIndex = 0;
 // VstRecorder vstRecorder;
 VstDataRecorder vstDataRecorder;
-int defaultDurationInSeconds = 60;
+int defaultDurationInSeconds = 5;
 
 // raindrops
 Scene theScene;
@@ -33,6 +33,10 @@ void setup() {
   Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
   vstText.setDurationInSeconds(5);
   demos.add(vstText);
+  Demo ctpText = new VstDataPlayback(vst, "CTP.DAT");
+  ctpText.setDurationInSeconds(5);
+  demos.add(ctpText);
+
 
   // Me
   demos.add(new CircleThing());
