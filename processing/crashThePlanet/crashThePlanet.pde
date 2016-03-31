@@ -42,7 +42,7 @@ void setup() {
   demos.add(new CircleThing());
   // demos.add(new PolarSine());
   demos.add(new SpiralDemo(5, 12, 300, 0));
-  // // demos.add(new Grid());
+  demos.add(new VstDataPlayback(vst, "GRID.DAT"));
 
   // Trammell
   demos.add(new Demo3D());
