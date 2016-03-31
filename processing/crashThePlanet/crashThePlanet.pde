@@ -2,10 +2,11 @@
  * (c) 2016 Trammell Hudson, Holly Hudson, Adelle Lin, Duncan Malashock and Jacob Joaquin
  */
 
+import java.io.File;
+
 Vst vst;
 Demos demos;
 int startingAnimationIndex = 0;
-// VstRecorder vstRecorder;
 VstDataRecorder vstDataRecorder;
 int defaultDurationInSeconds = 5;
 
@@ -13,7 +14,7 @@ int defaultDurationInSeconds = 5;
 Scene theScene;
 
 void settings() {
-  size(500, 500, P2D);  // Vectrex dimensions
+  size(500, 500);  // Vectrex dimensions
   pixelDensity(displayDensity());
 }
 
@@ -24,6 +25,12 @@ void setup() {
   // vstRecorder = new VstRecorder(vst, "MEH.DAT");
   // vstDataRecorder = new VstDataRecorder(vst, "MEH.DAT");
   // vst.displayTheBuffer = false;
+
+  File f = new File(sketchPath("") + "NODISPLAY");
+  if(f.exists() && !f.isDirectory()) { 
+    vst.displayTheBuffer = false;
+  }
+
   blendMode(ADD);
 
   demos = new Demos();
