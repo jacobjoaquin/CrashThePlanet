@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<sceneConfig>
+  <scene timestep='2' width='500' height='500'></scene>
+  <stars number='70' spread_x='0.5' spread_y='0.5'
+    min_speed='1' max_speed='10'></stars>
+</sceneConfig>

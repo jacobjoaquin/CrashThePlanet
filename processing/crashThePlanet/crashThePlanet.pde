@@ -29,6 +29,9 @@ void setup() {
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
 
+  demos.add(new StarScene());
+
+
   // Intro
   Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
   vstText.setDurationInSeconds(5);
