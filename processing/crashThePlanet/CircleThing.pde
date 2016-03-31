@@ -13,22 +13,22 @@ class CircleThing extends Demo {
 	}
 
 	void display() {
-		stroke(128);
-		float r = 5;
+		// stroke(128);
+		float r = width / 8.0;
 		pushMatrix();
 		translate(width / 2.0, height / 2.0);
 		float thisPhase = 1 - phase;
 		float thisPhase2 = 1 - phase2;
 		float r2 = r;
-		while (r2 <= 250) {
-			// stroke(sin(thisPhase * TAU) * 256);
-			stroke(map(sin(thisPhase2 * TAU), -1, 1, 1, 255));
+		while (r2 <= 330) {
+			stroke(max(0, sin(thisPhase * TAU) * 256));
 			float s = r2 * 2;
-			ellipse(0, 0, s, s);
-			r2 *= 1.25;
-			thisPhase += 0.1;
+			ellipse(sin(thisPhase2 * TAU) * r * 0.25, 0, s, s);			
+
+			r2 *= 1.125;
+			thisPhase += 0.05;
 			thisPhase -= (int) thisPhase;
-			thisPhase2 += 0.06125;
+			thisPhase2 += 0.03333;
 			thisPhase2 -= (int) thisPhase2;
 		}
 		popMatrix();

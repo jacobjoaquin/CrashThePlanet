@@ -8,12 +8,13 @@ Vst vst;
 Demos demos;
 int startingAnimationIndex = 0;
 VstDataRecorder vstDataRecorder;
-int defaultDurationInSeconds = 5;
+int defaultDurationInSeconds = 10;
 
 // raindrops
 Scene theScene;
 
 void settings() {
+  // Check if Raspberry pi
   File f = new File(sketchPath("") + "NODISPLAY");
   if(f.exists() && !f.isDirectory()) { 
     size(500, 500);
@@ -27,11 +28,8 @@ void settings() {
 void setup() {
   frameRate(50);
   vst = new Vst(this, createSerial());
-  // vst.displayTransit = true;
-  // vstRecorder = new VstRecorder(vst, "MEH.DAT");
-  // vstDataRecorder = new VstDataRecorder(vst, "MEH.DAT");
-  // vst.displayTheBuffer = false;
 
+  // Check if Raspberry pi
   File f = new File(sketchPath("") + "NODISPLAY");
   if(f.exists() && !f.isDirectory()) { 
     vst.displayTheBuffer = false;
@@ -42,9 +40,6 @@ void setup() {
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
 
-  demos.add(new StarScene());
-
-
   // Intro
   Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
   vstText.setDurationInSeconds(5);
@@ -53,12 +48,11 @@ void setup() {
   ctpText.setDurationInSeconds(5);
   demos.add(ctpText);
 
-
   // Me
   demos.add(new CircleThing());
-  // demos.add(new PolarSine());
   demos.add(new SpiralDemo(5, 12, 300, 0));
   demos.add(new VstDataPlayback(vst, "GRID.DAT"));
+  demos.add(new VstDataPlayback(vst, "SPIRAL.DAT"));
 
   // Trammell
   demos.add(new Demo3D());
@@ -75,10 +69,7 @@ void setup() {
 
   // Duncan
   demos.add(new Scene());
-
-
-  // Recording
-  // vstDataRecorder.beginRecord();
+  demos.add(new StarScene());
 }
 
 void draw() {
@@ -86,13 +77,6 @@ void draw() {
   demos.update();
   demos.display();
   vst.display();
-
-  // Recording
-  // vstDataRecorder.update();
-  // if (frameCount == 50) {
-  //   vstDataRecorder.endRecord();
-  //   exit();
-  // }
 
   // TODO: Clear removed from inside of class Vst. This should be handled better
   vst.buffer.clear();
