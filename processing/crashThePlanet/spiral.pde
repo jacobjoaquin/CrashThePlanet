@@ -80,6 +80,7 @@ class SpiralDemo extends Demo {
     this.nSpawns = nSpawns;
     this.nFrames = nFrames;
     this.nPhaseInc = nPhaseInc;
+    phaseInc = 1 / (float) nFrames;
   }
 
   void update() {

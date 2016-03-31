@@ -1,12 +1,12 @@
 class PolarSine extends Demo {
 	float phase = 0.0;
 	float phaseInc = 1 / 256.0;
-	int nArcs = 9;
-	float dInc = 8;
+	int nArcs = 4;
+	float dInc = 16;
 	int c0 = 255;
 	int c1 = 0;
 	float period = 0.125;
-	float innerRingSize = 4;
+	float innerRingSize = 18;
 	float outerRingSize = 330;
 	float rotateRings = 0.0;
 	void update() {
@@ -38,6 +38,8 @@ class PolarSine extends Demo {
 
 		while (d < outerRingSize) {
 			rotate(rotateRings);
+			float c = map(sin(outerPhase * 2 * TAU), -1, 1, 1, 255);
+			stroke(c);
 			for (int i = 0; i < nArcs; i++) {
 				float innerPhase = outerPhase + i;
 				pushMatrix();		
@@ -45,7 +47,7 @@ class PolarSine extends Demo {
 				float a = n * TAU;
 
 				rotate(a);
-				stroke(c0);
+				// stroke(c0);
 				if (counter % 2 == 0) {
 					rotate(unit * TAU * 0.5);
 					innerPhase += 0.5;

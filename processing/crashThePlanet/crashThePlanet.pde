@@ -7,6 +7,7 @@ Demos demos;
 int startingAnimationIndex = 0;
 VstRecorder vstRecorder;
 VstDataRecorder vstDataRecorder;
+int defaultDurationInSeconds = 60;
 
 // raindrops
 Scene theScene;
@@ -19,28 +20,37 @@ void settings() {
 void setup() {
   frameRate(50);
   vst = new Vst(this, createSerial());
-  vst.displayTransit = true;
+  // vst.displayTransit = true;
   // vstRecorder = new VstRecorder(vst, "MEH.DAT");
-  vstDataRecorder = new VstDataRecorder(vst, "MEH.DAT");
+  // vstDataRecorder = new VstDataRecorder(vst, "MEH.DAT");
   // vst.displayTheBuffer = false;
   blendMode(ADD);
 
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
 
-  // Add animations
-  demos.add(new FlowerDemo());
-  Demo catcher = new VstDataPlayback(vst, "CATCHER.DAT");
-  catcher.setFrameRate(25);
-  demos.add(catcher);
+  // Me
+  demos.add(new CircleThing());
+  // demos.add(new PolarSine());
+  demos.add(new SpiralDemo(5, 12, 300, 0));
+  // // demos.add(new Grid());
+
+  // Trammell
   demos.add(new Demo3D());
   demos.add(new SwarmDemo());
   demos.add(new QixDemo());
-  demos.add(new SpiralDemo(4, 16, 200, 0));
-  // // demos.add(new Grid());
+  
+  // Holly
+  demos.add(new FlowerDemo());
+
+  // Adelle
+  Demo catcher = new VstDataPlayback(vst, "CATCHER.DAT");
+  catcher.setFrameRate(25);
+  demos.add(catcher);
+
+  // Duncan
   demos.add(new Scene());
-  demos.add(new PolarSine());
-  demos.add(new Foo());
+
 
   // Recording
   // vstDataRecorder.beginRecord();
