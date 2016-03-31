@@ -14,7 +14,13 @@ int defaultDurationInSeconds = 5;
 Scene theScene;
 
 void settings() {
-  size(500, 500);  // Vectrex dimensions
+  File f = new File(sketchPath("") + "NODISPLAY");
+  if(f.exists() && !f.isDirectory()) { 
+    size(500, 500);
+  }
+  else {
+    size(500, 500, P2D);
+  }
   pixelDensity(displayDensity());
 }
 
@@ -29,7 +35,7 @@ void setup() {
   File f = new File(sketchPath("") + "NODISPLAY");
   if(f.exists() && !f.isDirectory()) { 
     vst.displayTheBuffer = false;
-  }
+  } 
 
   blendMode(ADD);
 
