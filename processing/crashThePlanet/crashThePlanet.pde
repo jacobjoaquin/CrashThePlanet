@@ -8,7 +8,7 @@ Vst vst;
 Demos demos;
 int startingAnimationIndex = 0;
 VstDataRecorder vstDataRecorder;
-int defaultDurationInSeconds = 10;
+int defaultDurationInSeconds = 30;
 
 // raindrops
 Scene theScene;
@@ -40,36 +40,26 @@ void setup() {
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
 
-  // Intro
-  Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
-  vstText.setDurationInSeconds(5);
-  demos.add(vstText);
-  Demo ctpText = new VstDataPlayback(vst, "CTP.DAT");
-  ctpText.setDurationInSeconds(5);
-  demos.add(ctpText);
-
-  // Me
-  demos.add(new CircleThing());
-  demos.add(new SpiralDemo(5, 12, 300, 0));
-  demos.add(new VstDataPlayback(vst, "GRID.DAT"));
-  demos.add(new VstDataPlayback(vst, "SPIRAL.DAT"));
-
-  // Trammell
-  demos.add(new Demo3D());
-  demos.add(new SwarmDemo());
-  demos.add(new QixDemo());
-  
-  // Holly
-  demos.add(new FlowerDemo());
-
-  // Adelle
   Demo catcher = new VstDataPlayback(vst, "CATCHER.DAT");
   catcher.setFrameRate(25);
-  demos.add(catcher);
+  Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
+  vstText.setDurationInSeconds(5);
+  Demo ctpText = new VstDataPlayback(vst, "CTP.DAT");
+  ctpText.setDurationInSeconds(5);
 
-  // Duncan
-  demos.add(new Scene());
+  demos.add(vstText);
+  demos.add(ctpText);
+  demos.add(new VstDataPlayback(vst, "SPIRAL.DAT"));
+  demos.add(new SwarmDemo());
+  demos.add(new VstDataPlayback(vst, "GRID.DAT"));
+  demos.add(new Demo3D());
+  demos.add(catcher);
   demos.add(new StarScene());
+  demos.add(new SpiralDemo(5, 12, 300, 0));
+  demos.add(new QixDemo());
+  demos.add(new FlowerDemo());
+  demos.add(new Scene());
+  demos.add(new CircleThing());
 }
 
 void draw() {
