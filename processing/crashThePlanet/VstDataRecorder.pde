@@ -111,6 +111,8 @@ class VstDataPlayback extends Demo {
 			}
 			else {
 				loadFile();
+				update();
+				return;
 			}
 		} catch (IOException e) {
 			println(e);

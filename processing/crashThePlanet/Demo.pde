@@ -68,4 +68,8 @@ abstract class Demo extends DisplayableBase {
   int getDurationInFrames() {
     return (int) ((float) theFrameRate * durationInSeconds);
   }
+
+  void setDurationInSeconds(float durationInSeconds) {
+    this.durationInSeconds = durationInSeconds;
+  }
 }

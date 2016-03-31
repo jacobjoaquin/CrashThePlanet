@@ -5,7 +5,7 @@
 Vst vst;
 Demos demos;
 int startingAnimationIndex = 0;
-VstRecorder vstRecorder;
+// VstRecorder vstRecorder;
 VstDataRecorder vstDataRecorder;
 int defaultDurationInSeconds = 60;
 
@@ -28,6 +28,11 @@ void setup() {
 
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
+
+  // Intro
+  Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
+  vstText.setDurationInSeconds(5);
+  demos.add(vstText);
 
   // Me
   demos.add(new CircleThing());
