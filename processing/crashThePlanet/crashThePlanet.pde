@@ -29,6 +29,7 @@ void setup() {
   demos.setAnimationIndex(startingAnimationIndex);
 
   // Add animations
+  demos.add(new FlowerDemo());
   Demo catcher = new VstDataPlayback(vst, "CATCHER.DAT");
   catcher.setFrameRate(25);
   demos.add(catcher);
