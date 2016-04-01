@@ -45,12 +45,13 @@ void setup() {
   Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
   vstText.setDurationInSeconds(5);
   Demo ctpText = new VstDataPlayback(vst, "CTP.DAT");
-  ctpText.setDurationInSeconds(5);
+  Demo sunDemo = new SunDemo();
 
   demos.add(vstText);
   demos.add(ctpText);
   demos.add(new VstDataPlayback(vst, "SPIRAL.DAT"));
   demos.add(new SwarmDemo());
+  demos.add(sunDemo);
   demos.add(new VstDataPlayback(vst, "GRID.DAT"));
   demos.add(new Demo3D());
   demos.add(catcher);
