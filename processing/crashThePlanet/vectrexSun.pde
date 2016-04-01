@@ -1,7 +1,7 @@
 class SunPoint extends DisplayableBase {
   PVector center = new PVector(width / 2.0, height / 2.0);
   PVector end;
-  int nFrames = 80;
+  int nFrames = 80 * 4;
   int framesLeft = nFrames;
   color c = 0;
   float angle;
@@ -11,8 +11,8 @@ class SunPoint extends DisplayableBase {
   
   SunPoint() {
     angle = random(TAU);
-    addAngle += TAU * random(-0.002, 0.002);
-    lengthAdd = random(1, 4);
+    // addAngle += TAU * random(-0.002, 0.002);
+    lengthAdd = random(0.2, 1);
   }
   
   void update() {
@@ -34,7 +34,9 @@ class SunPoint extends DisplayableBase {
 
 class VectrexSun extends DisplayableList<SunPoint> {
   void update() {
-    add(new SunPoint());
+    if (frameCount % 4 == 0) {
+      add(new SunPoint());
+    }
     super.update();
   }
 }
@@ -46,7 +48,7 @@ class SunDemo extends Demo {
     super.init();
     vectrexSun.clear();
   }
-  
+
   void update() {
     vectrexSun.update();
   }

@@ -6,7 +6,7 @@ import java.io.File;
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 0;
+int startingAnimationIndex = 7;
 VstDataRecorder vstDataRecorder;
 int defaultDurationInSeconds = 30;
 
@@ -40,12 +40,14 @@ void setup() {
   demos = new Demos();
   demos.setAnimationIndex(startingAnimationIndex);
 
-  Demo catcher = new VstDataPlayback(vst, "CATCHER.DAT");
+  Demo catcher = new VstDataPlayback(vst, "CATCHER2.DAT");
   catcher.setFrameRate(25);
   Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
   vstText.setDurationInSeconds(5);
   Demo ctpText = new VstDataPlayback(vst, "CTP.DAT");
   Demo sunDemo = new SunDemo();
+  Demo raindrops = new Scene();
+  raindrops.setFrameRate(30);
 
   demos.add(vstText);
   demos.add(ctpText);
@@ -59,7 +61,7 @@ void setup() {
   demos.add(new SpiralDemo(5, 12, 300, 0));
   demos.add(new QixDemo());
   demos.add(new FlowerDemo());
-  demos.add(new Scene());
+  demos.add(raindrops);
   demos.add(new CircleThing());
 }
 
