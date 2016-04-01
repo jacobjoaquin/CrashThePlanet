@@ -6,7 +6,7 @@ import java.io.File;
 
 Vst vst;
 Demos demos;
-int startingAnimationIndex = 7;
+int startingAnimationIndex = 0;
 VstDataRecorder vstDataRecorder;
 int defaultDurationInSeconds = 30;
 
@@ -45,9 +45,12 @@ void setup() {
   Demo vstText = new VstDataPlayback(vst, "VSTLINES.DAT");
   vstText.setDurationInSeconds(5);
   Demo ctpText = new VstDataPlayback(vst, "CTP.DAT");
+  ctpText.setDurationInSeconds(5);
   Demo sunDemo = new SunDemo();
   Demo raindrops = new Scene();
   raindrops.setFrameRate(30);
+  Demo demo3d = new Demo3D();
+  demo3d.setFrameRate(25);
 
   demos.add(vstText);
   demos.add(ctpText);
@@ -55,7 +58,7 @@ void setup() {
   demos.add(new SwarmDemo());
   demos.add(sunDemo);
   demos.add(new VstDataPlayback(vst, "GRID.DAT"));
-  demos.add(new Demo3D());
+  demos.add(demo3d);
   demos.add(catcher);
   demos.add(new StarScene());
   demos.add(new SpiralDemo(5, 12, 300, 0));
